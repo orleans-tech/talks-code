@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 13px Helvetica, Arial;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header p {
+    font-family: 'Montserrat', sans-serif;
+    padding: 5px 0;
+}
+
+header .online {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    color: rgb(197, 65, 17);
+}
+
+header .online .numberConnections {
+    color: coral;
+}
+
+.messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 400px;
+    background-color: rgb(229, 229, 229);
+    overflow: scroll;
+}
+.messages li { padding: 5px 10px; }
+.messages li:nth-child(odd) { background: #eee; }
+
+.chat-container {
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.chat-container form {
+    position: absolute;
+    bottom: -30px;
+    height: 30px;
+    background-color: rgb(121, 155, 216);
+    width: 100%;
+}
+
+.chat-container form input[type=text] {
+    height: 30px;
+    border: 0;
+    width: 85%;
+    color: white;
+    background-color: transparent;
+    padding-left: 10px;
+    display: block;
+    float: left;
+}
+
+.chat-container form input[type=text] {
+    height: 30px;
+    border: 0;
+    width: 90%;
+    color: white;
+    background-color: transparent;
+    padding-left: 10px;
+}
+
+.new-message-input::-webkit-input-placeholder {
+    color: rgb(198, 213, 239);
+    font-style: italic;
+}
+
+.chat-container form button {
+    width: 10%;
+    height: 30px;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(51, 86, 150);
+    display: block;
+    float: right;
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <title>Orleans Tech Talks: s01eE03 Decouverte de Node.JS</title>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css' />
+    <link href="/styles.css" media="all" rel="stylesheet" />
+</head>
+<body>
+<header>
+    <h1>Orleans Tech Talks</h1>
+    <p>Découverte de Node.JS</p>
+    <span class="online">Nous sommes <span class="numberConnections">0</span> sur le chat</span>
+</header>
+<div class="chat-container">
+    <ul class="messages"></ul>
+    <form action="">
+        <input class="new-message-input" placeholder="Entrez votre texte ici" type="text" id="m" autocomplete="off" />
+        <button>Send</button>
+    </form>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/jquery-1.11.1.js"></script>
+<script>
+    var socket = io();
+    $('form').submit(function(){
+        var m = $('#m');
+        socket.emit('chat message', m.val());
+        m.val('');
+        return false;
+    });
+    socket.on('chat message', function(data) {
+        var messagesContainer = $('.messages'),
+            messageId = 'message-' + data.id;
+
+        messagesContainer.append($('<li id="' + messageId + '">').text(data.message));
+
+        var scrollTo = $('#' + messageId);
+        messagesContainer.animate({
+            scrollTop: scrollTo.offset().top - messagesContainer.offset().top + messagesContainer.scrollTop()
+        });
+    });
+    socket.on('number_connections', function(numberConnections) {
+        $('.numberConnections').html(numberConnections);
+    });
+</script>
+</body>
+</html>
