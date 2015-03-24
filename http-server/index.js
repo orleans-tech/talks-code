@@ -1,17 +1,21 @@
-var express = require('express');
-var path = require('path');
-var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+'use strict';
 
-app.use(express.static(path.join(__dirname)));
+var express     = require('express'),
+    path        = require('path'),
+    app         = express(),
+    http        = require('http').Server(app),
+    io          = require('socket.io')(http);
+
+var numberOfConnections = 0;
+var messageId = 0;
+var port = process.env.PORT || 5050;
+
+app.use(express.static(path.join(__dirname, 'assets')));
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
 });
 
-var numberOfConnections = 0;
-var messageId = 0;
 var emitNumberOfConnections = function() {
     io.emit('number_connections', numberOfConnections);
 };
@@ -22,7 +26,6 @@ io.on('connection', function(socket) {
 
     socket.on('chat message', function(msg) {
         messageId++;
-        console.log('message: ' + msg);
         io.emit('chat message', {
             message: msg,
             id: messageId
@@ -35,6 +38,6 @@ io.on('connection', function(socket) {
     });
 });
 
-http.listen(8888, function(){
-    console.log('listening on *:3000');
+http.listen(port, function(){
+    console.log('listening on localhost:' + port);
 });

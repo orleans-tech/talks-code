@@ -38,7 +38,7 @@ header .online .numberConnections {
     padding: 0;
     height: 400px;
     background-color: rgb(229, 229, 229);
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .messages li { padding: 5px 10px; }
 .messages li:nth-child(odd) { background: #eee; }
