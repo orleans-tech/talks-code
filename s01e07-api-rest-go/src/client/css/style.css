@@ -1,0 +1,33 @@
+body {
+    font-family: Verdana, Arial, sans-serif;
+} 
+
+.title {
+	text-align: center;
+}
+
+.field {
+	width: 100%;
+}
+
+.like {
+	font-size: 2rem;
+	font-weight: bold;
+	width: 15rem;
+}
+
+.inclike {
+	margin-left: 2rem;
+}
+
+ul {
+	list-style-type: none;
+}
+
+th:first-child, td:first-child {
+	width: 85%;
+}
+
+th:last-child, td:last-child {
+	width: 15%;
+}

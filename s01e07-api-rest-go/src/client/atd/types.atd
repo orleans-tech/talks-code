@@ -1,0 +1,13 @@
+
+type topic = {
+	id : int <ocaml repr="int64"> ;
+	text : string ;
+	like : int <ocaml repr="int64"> ;
+}
+
+type topic_list = topic list
+
+type t = {
+	topics : topic list ;
+	field : string ;
+}
